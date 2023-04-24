@@ -1,0 +1,256 @@
+
+# Enterprise Linux - RHEL-9
+
+Product Documentation for Red Hat Enterprise Linux 8/9
+https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8
+
+https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux
+https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/pdf/upgrading_from_rhel_6_to_rhel_8/red_hat_enterprise_linux-8-upgrading_from_rhel_6_to_rhel_8-en-us.pdf
+
+# Kernel details/sourceCode 
+https://www.kernel.org/
+
+
+# Classroom Environment:-
+1) User detail:
+   student/student   (having "sudo" access with password). 
+   root/redhat
+
+2) Network/Domain: 
+   example.com          172.25.254.0/24   (IPV4 - Internet Protocal Version 4)
+   lab.example.com      172.25.250.0/24 
+
+
+### Extra explaination:-
+
+   Explain this - 172.25.250.0/24
+   172.25.250.0
+   172.25.250.1  - 10101100.00011001.11111010.00000001 
+   172.25.250.2
+   ..
+   ..
+   172.25.250.254
+   172.25.250.255
+   
+   Class A - 0-127     
+   CLass B - 128-191
+   CLass C - 192-224 
+   Class D - 
+   Class E - 
+   
+   IPV4 IP address is a 32 bits logical address which can be set on Physical/Virtual NIC (Network Interface Card).
+   
+   00000000  - 0
+   11111111  - 255 	
+   
+   8 bits . 8 bits . 8 bits . 8 bits 
+   0000000  0000000  0000000   0000000    0.0.0.0
+   0000001  0000000  0000000   0000000    1.0.0.0
+   0000020  0000000  0000000   0000000    2.0.0.0
+   ..
+   ..
+   01111111 0000000  0000000   0000000    127.0.0.0
+   
+   10000000.
+   10000001.
+   10000010.
+   
+##################################
+VMs/Servers:- 
+  1) workstation.lab.example.com  (GUI based Linux - its jump server) 
+  2) servera.lab.example.com      (Server for operations)
+  3) serverb.lab.example.com      (Server for operations)
+  4) bastion.lab.example.com      (Providing services - DNS/DHCP/YUm etc 
+  5) classroom.lab.example.com    (Internet connectivity)
+  
+  6) utility.lab.example.com 
+###################################
+
+# Point-01 
+  Login to Linux system?
+  1) Using GUI (Graphycal User interface - GNOME3)
+    FYI- ***
+	  GNOME - GNU Network Model Environment.
+	  GNU   - GNU Not Unix 
+	  
+	  GNU Project - TO create UNIX like project.
+	  Acc to GNU project - All UNIX utilites come under OpenSource.
+	  What is OpenSource - S/w and source can be download by anyone and s/w can be used for any purpose and source code can be modified but only relese unser GPL 
+	  
+	  Later - Linus Torvals came - Took Unix Utility from opensource and create Linux kernel.
+	  
+	  CUrrently 
+	  OS  = Linux Kernel + UNIX utility + More updates.
+	  
+	  
+  2) Using CLI 
+      username/password 
+	  using ssh (ssh server_name -l user_name or ssh user@server )
+	  
+    NOte: console login ?
+         via Web console (https)
+         via CLI console (ssh) 	
+         via application
+
+# point-02 
+   User/password 
+    root   (Admin account)
+    normal (Normal user or later can be admin also).
+	
+	root/redhat 
+	student/student 
+	
+
+# POint-03 - FileSystem.
+ - Absolute path always start with "/" 
+ - Relative path nerver start with "/"
+ 
+#####
+ /org/BE
+  - IT 
+      - 1st-year
+	  - 2nd-year
+	  - 3rd-year/file1.txt "This is 1st file"
+	  - 4th-year 
+  - ECE
+      - 1st-year
+	  - 2nd-year/file2.txt "This is 2nd file"
+	  - 3rd-year 
+	  - 4th-year 
+  - ME
+      - 1st-year/file3.txt "This is 3rd file"
+	  - 2nd-year
+	  - 3rd-year 
+	  - 4th-year 
+  - CSE
+      - 1st-year
+	  - 2nd-year
+	  - 3rd-year 
+	  - 4th-year/file4.txt "This is 4th file"
+	
+Basic Linux operations:-
+ # mkdir dir_name (Create DIrectory)
+ # mkdir dir1 dir2 dir3 
+ # mkdir dir{1..100}
+ 
+ # touch file1 
+ # touch file1.txt file2.txt 
+ # touch file{1..100}.txt 
+ 
+ # vim file_name
+ Press "i" key to insert
+ Then write your content 
+ This is 2nd line 
+ This is 3rd line 
+ Press "esc" key to lock the screen
+ :wq 
+ w - write & save 
+ q - quit (Come out from file)
+ ! - forcefully closing (not recomm)
+ 
+ 
+ # cd (change directory)
+ cd dir_name 
+ or 
+ cd dir_path 
+ 
+ cd .. (One step back)
+ cd ../.. (two step back)
+ cd ../../../
+ cd (It take to default home dir)
+ cd ~ (It take to default home dir)
+ cd - (previous dir/location)
+ 
+ #command option argument
+ 
+ COmmand is utiltiy - to perform some task 
+ option - Modifying the beharious of the command
+ argument - Data which is/are needed to execute the command.
+ 
+ mkdir dir1 
+ mkdir dir2 
+ touch file1 
+ 
+===============================================
+Users 
+groups 
+Permission 
+
+Users opearations:-
+- useradd  
+- userdel 
+- usermod 
+
+groups opearations:-
+- groupadd  
+- groupdel 
+- groupmod 
+
+
+- passwd 
+- chage 
+
+- chown  (CHanges ownership - owner/groupOwner)
+- chmod  ( Permission - Read/Write/Execute w.r.t owner/groupOwner/other
+- SUID 
+- SGID 
+- UMASK 
+- StickyBit
+
+Prevelige escalation:-
+sudo and it's use cases.
+
+
+- /etc/passwd
+- /etc/group 
+- /etc/shadow 
+- /etc/sudoers 
+- /etc/login.def 
+- /etc/bash 
+- /etc/profile 
+##############################################
+Groups:-
+unixadm 
+dbadm 
+networkadm 
+middleware
+app1grp
+project 
+
+user1/user2 (user1-5) , primary_grp = unixadm , suplementry_grp =  ptoject
+user6/user7 (user6-10) , primary_grp = dbadm , suplementry_grp =  ptoject
+user11/user12 (user11-15) , primary_grp = networkadm , suplementry_grp =  ptoject
+user16/user20 (user16-20) , primary_grp = middleware , suplementry_grp =  ptoject
+user21/user25 (user21-25) , primary_grp = app1grp , suplementry_grp =  ptoject
+ 
+
+/project  (ownership - root:projetc)
+  UNIX    root:unixadm  
+  DBA     root: dbadm
+  NETWORK root: networkadm
+  MIDDELWARE  root:middleware
+   APP1        root:app1grp 
+   
+   
+Set SUID and SGID and StickyBit.
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
